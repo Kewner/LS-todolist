@@ -83,7 +83,7 @@ class TodoList {
   }
 
   findByTitle(title) {
-    return this.filter(todo => todo.title === title).first();
+    return this.filter(todo => todo.getTitle() === title).first();
   }
 
   allDone() {
@@ -95,7 +95,8 @@ class TodoList {
   }
 
   markDone(title) {
-    this.findByTitle(title).markDone();
+    // optional chaining instead of if statement
+    this.findByTitle(title)?.markDone();
   }
 
   markAllDone() {
@@ -110,37 +111,10 @@ class TodoList {
     return [...this.todos];
   }
 
+  // _ in name indicated 'private' method
   _validateIndex(index) {
     if (!(index in this.todos)) {
       throw new ReferenceError(`invalid index: ${index}`);
     }
   }
 }
-
-let todo1 = new Todo("Buy milk");
-let todo2 = new Todo("Clean room");
-let todo3 = new Todo("Go to the gym");
-let todo4 = new Todo("Go shopping");
-let todo5 = new Todo("Feed the cats");
-let todo6 = new Todo("Study for Launch School");
-let list = new TodoList("Today's Todos");
-
-list.add(todo1);
-list.add(todo2);
-list.add(todo3);
-list.add(todo4);
-list.add(todo5);
-list.add(todo6);
-todo1.markDone();
-todo5.markDone();
-
-console.log(list.findByTitle('Feed the cats'));
-console.log(list.allDone());
-console.log(list.allNotDone());
-list.markDone('Go shopping');
-console.log(list.allDone());
-list.markAllDone();
-console.log(list);
-list.markAllUndone();
-console.log(list);
-console.log(list.toArray() === list.todos);
