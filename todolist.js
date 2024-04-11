@@ -66,6 +66,10 @@ class TodoList {
     return `${title}\n${list}`;
   }
 
+  forEach(callback) {
+    this.todos.forEach(callback);
+  }
+
   _validateIndex(index) {
     if (!(index in this.todos)) {
       throw new ReferenceError(`invalid index: ${index}`);
