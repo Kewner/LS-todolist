@@ -15,7 +15,7 @@ class TodoList {
       throw new TypeError('can only add Todo objects');
     }
 
-    if (!this.todos.includes(todo)) this.todos.push(todo);
+    this.todos.push(todo);
   }
 
   size() {
@@ -151,3 +151,4 @@ list.add(todo4);
 list.add(todo5);
 list.add(todo6);
 console.log(`${list}`); // calls toString
+console.log(String(list));
