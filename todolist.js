@@ -40,6 +40,18 @@ class TodoList {
       throw new ReferenceError(`invalid index: ${index}`);
     }
   }
+
+  markDoneAt(index) {
+    this.itemAt(index).markDone();
+  }
+
+  markUndoneAt(index) {
+    this.itemAt(index).markUndone();
+  }
+
+  isDone() {
+    return this.todos.every(todo => todo.isDone());
+  }
 }
 
 // test todolist creation
@@ -72,3 +84,22 @@ console.log(emptyList.last());
 
 // test indexAt
 console.log(list.itemAt(1));
+
+// test markDoneAt and markUndoneAt
+list.markDoneAt(1);
+console.log(list);
+
+list.markUndoneAt(1);
+console.log(list);
+
+// test isDone
+console.log(list.isDone()); // false
+
+list.markDoneAt(0);
+list.markDoneAt(1);
+list.markDoneAt(2);
+list.markDoneAt(3);
+console.log(list.isDone()); // true
+
+list.markUndoneAt(2);
+console.log(list.isDone()); // false
