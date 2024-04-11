@@ -65,6 +65,12 @@ class TodoList {
     this._validateIndex(index);
     return this.todos.splice(index, 1);
   }
+
+  toString() {
+    let title = `---- ${this.title} ----`;
+    let list = this.todos.map(todo => todo.toString()).join('\n');
+    return `${title}\n${list}`;
+  }
 }
 
 // test todolist creation
@@ -137,3 +143,11 @@ console.log(list.removeAt(2));
 console.log(list.removeAt(0));
 console.log(list.removeAt(1));
 console.log(list);
+
+// test toString
+list.add(todo1);
+list.add(todo2);
+list.add(todo4);
+list.add(todo5);
+list.add(todo6);
+console.log(`${list}`); // calls toString
