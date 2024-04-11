@@ -60,6 +60,11 @@ class TodoList {
   pop() {
     return this.todos.pop();
   }
+
+  removeAt(index) {
+    this._validateIndex(index);
+    return this.todos.splice(index, 1);
+  }
 }
 
 // test todolist creation
@@ -120,3 +125,15 @@ console.log(list);
 console.log(emptyList.shift());
 console.log(emptyList.pop());
 console.log(emptyList);
+
+// test removeAt
+let todo5 = new Todo("Feed the cats");
+let todo6 = new Todo("Study for Launch School");
+list.add(todo5);
+list.add(todo6);
+console.log(list);
+
+console.log(list.removeAt(2));
+console.log(list.removeAt(0));
+console.log(list.removeAt(1));
+console.log(list);
