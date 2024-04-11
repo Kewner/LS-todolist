@@ -82,6 +82,34 @@ class TodoList {
     return newList;
   }
 
+  findByTitle(title) {
+    return this.filter(todo => todo.title === title).first();
+  }
+
+  allDone() {
+    return this.filter(todo => todo.isDone());
+  }
+
+  allNotDone() {
+    return this.filter(todo => !todo.isDone());
+  }
+
+  markDone(title) {
+    this.findByTitle(title).markDone();
+  }
+
+  markAllDone() {
+    this.forEach(todo => todo.markDone());
+  }
+
+  markAllUndone() {
+    this.forEach(todo => todo.markUndone());
+  }
+
+  toArray() {
+    return [...this.todos];
+  }
+
   _validateIndex(index) {
     if (!(index in this.todos)) {
       throw new ReferenceError(`invalid index: ${index}`);
@@ -106,5 +134,13 @@ list.add(todo6);
 todo1.markDone();
 todo5.markDone();
 
-let doneTodos = list.filter(todo => todo.isDone());
-console.log(doneTodos.first());
+console.log(list.findByTitle('Feed the cats'));
+console.log(list.allDone());
+console.log(list.allNotDone());
+list.markDone('Go shopping');
+console.log(list.allDone());
+list.markAllDone();
+console.log(list);
+list.markAllUndone();
+console.log(list);
+console.log(list.toArray() === list.todos);
