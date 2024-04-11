@@ -29,6 +29,17 @@ class TodoList {
   last() {
     return this.todos[this.size() - 1];
   }
+
+  itemAt(index) {
+    this._validateIndex(index);
+    return this.todos[index];
+  }
+
+  _validateIndex(index) {
+    if (!(index in this.todos)) {
+      throw new ReferenceError(`invalid index: ${index}`);
+    }
+  }
 }
 
 // test todolist creation
@@ -58,3 +69,6 @@ console.log(list.last());
 let emptyList = new TodoList("Empty List");
 console.log(emptyList.first());
 console.log(emptyList.last());
+
+// test indexAt
+console.log(list.itemAt(1));
