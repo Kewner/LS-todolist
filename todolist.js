@@ -2,13 +2,17 @@
 // We can perform typical collection-oriented actions on a
 // TodoList object, including iteration and selection.
 
+const Todo = require('./todo');
+
 class TodoList {
   constructor(title) {
     this.title = title;
     this.todos = [];
   }
 
-  // rest of class needs implementation
+  add(todo) {
+
+  }
 }
 
 let list = new TodoList("Today's Todos");

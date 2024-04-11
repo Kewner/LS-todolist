@@ -31,3 +31,5 @@ class Todo {
     return this.title;
   }
 }
+
+module.exports = Todo;
