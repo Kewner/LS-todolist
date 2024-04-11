@@ -52,6 +52,14 @@ class TodoList {
   isDone() {
     return this.todos.every(todo => todo.isDone());
   }
+
+  shift() {
+    return this.todos.shift();
+  }
+
+  pop() {
+    return this.todos.pop();
+  }
 }
 
 // test todolist creation
@@ -103,3 +111,12 @@ console.log(list.isDone()); // true
 
 list.markUndoneAt(2);
 console.log(list.isDone()); // false
+
+// test shift and pop
+console.log(list.shift());
+console.log(list.pop());
+console.log(list);
+
+console.log(emptyList.shift());
+console.log(emptyList.pop());
+console.log(emptyList);
