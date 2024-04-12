@@ -1,7 +1,3 @@
-// Class TodoList represents a collection of Todo objects.
-// We can perform typical collection-oriented actions on a
-// TodoList object, including iteration and selection.
-
 const Todo = require('./todo');
 
 class TodoList {
@@ -118,3 +114,5 @@ class TodoList {
     }
   }
 }
+
+module.exports = TodoList;
