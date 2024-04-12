@@ -1,5 +1,5 @@
-const Todo = require('./todo');
-const TodoList = require('./todolist');
+const Todo = require('../lib/todo');
+const TodoList = require('../lib/todolist');
 
 describe('TodoList', () => {
   let todo1;
