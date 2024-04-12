@@ -150,4 +150,34 @@ describe('TodoList', () => {
     expect(newList).toBeInstanceOf(TodoList);
     expect(newList.toArray()).toEqual([todo1]);
   });
+
+  test('findByTitle returns todo with given title', () => {
+    expect(list.findByTitle('Clean room')).toEqual(todo2);
+    expect(list.findByTitle('Do nothing')).toBeUndefined();
+  });
+
+  test('allDone returns a new TodoList object with all done todos', () => {
+    todo2.markDone();
+    todo3.markDone();
+
+    const newList = list.allDone();
+    expect(list).toBeInstanceOf(TodoList);
+    expect(newList.toArray()).toEqual([todo2, todo3]);
+  });
+
+  test('markDone marks todo with given title done', () => {
+    list.markDone('Go to the gym');
+    list.markDone('Invalid title');
+    expect(list.allDone().toArray()).toEqual([todo3]);
+
+    list.markDone('Buy milk');
+    expect(list.allDone().toArray()).toEqual([todo1, todo3]);
+  });
+
+  test('markAllUndone marks all todos undone', () => {
+    list.markAllDone();
+    list.markAllUndone();
+
+    expect(list.allNotDone().toArray()).toEqual([todo1, todo2, todo3]);
+  });
 });
