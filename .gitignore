@@ -1,7 +1,9 @@
 db/*.sqlite3
 .DS_Store
 node_modules
+
 .eslintrc.yml
+jest.config.js
 
 test/coverage
 coverage/
